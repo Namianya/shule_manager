@@ -95,7 +95,7 @@ const Header = () => {
               </Grid>
               <Grid item xl={3} lg={6} xs={12}>
                 <CardStats
-                  subtitle="Sales"
+                  subtitle="Users"
                   title="924"
                   icon={GroupAdd}
                   color="bgWarningLight"

@@ -6,13 +6,13 @@ const themeColors = require("assets/theme/colors.js").default;
 //
 
 Chart.elements.Rectangle.prototype.draw = function () {
-  var ctx = this._chart.ctx;
-  var vm = this._view;
+  const ctx = this._chart.ctx;
+  const vm = this._view;
   var left, right, top, bottom, signX, signY, borderSkipped, radius;
-  var borderWidth = vm.borderWidth;
+  let borderWidth = vm.borderWidth;
   // Set Radius Here
   // If radius is large enough to cause drawing errors a max radius is imposed
-  var cornerRadius = 6;
+  const cornerRadius = 6;
 
   if (!vm.horizontal) {
     // bar
@@ -38,16 +38,16 @@ Chart.elements.Rectangle.prototype.draw = function () {
   // adjust the sizes to fit if we're setting a stroke on the line
   if (borderWidth) {
     // borderWidth shold be less than bar width and bar height.
-    var barSize = Math.min(Math.abs(left - right), Math.abs(top - bottom));
+    const barSize = Math.min(Math.abs(left - right), Math.abs(top - bottom));
     borderWidth = borderWidth > barSize ? barSize : borderWidth;
-    var halfStroke = borderWidth / 2;
+    const halfStroke = borderWidth / 2;
     // Adjust borderWidth when bar top position is near vm.base(zero).
-    var borderLeft = left + (borderSkipped !== "left" ? halfStroke * signX : 0);
-    var borderRight =
-      right + (borderSkipped !== "right" ? -halfStroke * signX : 0);
-    var borderTop = top + (borderSkipped !== "top" ? halfStroke * signY : 0);
-    var borderBottom =
-      bottom + (borderSkipped !== "bottom" ? -halfStroke * signY : 0);
+    const borderLeft = left + (borderSkipped !== "left" ? halfStroke * signX : 0);
+    const borderRight =
+        right + (borderSkipped !== "right" ? -halfStroke * signX : 0);
+    const borderTop = top + (borderSkipped !== "top" ? halfStroke * signY : 0);
+    const borderBottom =
+        bottom + (borderSkipped !== "bottom" ? -halfStroke * signY : 0);
     // not become a vertical line?
     if (borderLeft !== borderRight) {
       top = borderTop;
@@ -68,7 +68,7 @@ Chart.elements.Rectangle.prototype.draw = function () {
   // Corner points, from bottom-left to bottom-right clockwise
   // | 1 2 |
   // | 0 3 |
-  var corners = [
+  const corners = [
     [left, bottom],
     [left, top],
     [right, top],
@@ -76,8 +76,8 @@ Chart.elements.Rectangle.prototype.draw = function () {
   ];
 
   // Find first (starting) corner with fallback to 'bottom'
-  var borders = ["bottom", "left", "top", "right"];
-  var startCorner = borders.indexOf(borderSkipped, 0);
+  const borders = ["bottom", "left", "top", "right"];
+  let startCorner = borders.indexOf(borderSkipped, 0);
   if (startCorner === -1) {
     startCorner = 0;
   }
@@ -87,10 +87,10 @@ Chart.elements.Rectangle.prototype.draw = function () {
   }
 
   // Draw rectangle from 'startCorner'
-  var corner = cornerAt(0);
+  let corner = cornerAt(0);
   ctx.moveTo(corner[0], corner[1]);
 
-  for (var i = 1; i < 4; i++) {
+  for (let i = 1; i < 4; i++) {
     corner = cornerAt(i);
     let nextCornerId = i + 1;
     if (nextCornerId === 4) {
@@ -131,13 +131,13 @@ Chart.elements.Rectangle.prototype.draw = function () {
   }
 };
 
-var mode = "light"; //(themeMode) ? themeMode : 'light';
-var fonts = {
+const mode = "light"; //(themeMode) ? themeMode : 'light';
+const fonts = {
   base: "Open Sans",
 };
 
 // Colors
-var colors = {
+const colors = {
   gray: themeColors.gray,
   theme: {
     default: themeColors.dark.main,
@@ -158,7 +158,7 @@ var colors = {
 // Chart.js global options
 function chartOptions() {
   // Options
-  var options = {
+  const options = {
     defaults: {
       global: {
         responsive: true,
@@ -208,17 +208,17 @@ function chartOptions() {
       doughnut: {
         cutoutPercentage: 83,
         legendCallback: function (chart) {
-          var data = chart.data;
-          var content = "";
+          const data = chart.data;
+          let content = "";
 
           data.labels.forEach(function (label, index) {
-            var bgColor = data.datasets[0].backgroundColor[index];
+            const bgColor = data.datasets[0].backgroundColor[index];
 
             content += '<span className="chart-legend-item">';
             content +=
-              '<i className="chart-legend-indicator" style="background-color: ' +
-              bgColor +
-              '"></i>';
+                '<i className="chart-legend-indicator" style="background-color: ' +
+                bgColor +
+                '"></i>';
             content += label;
             content += "</span>";
           });
@@ -271,7 +271,7 @@ function chartOptions() {
 
 // Parse global options
 function parseOptions(parent, options) {
-  for (var item in options) {
+  for (let item in options) {
     if (typeof options[item] !== "object") {
       parent[item] = options[item];
     } else {
@@ -293,7 +293,7 @@ let chartExample1 = {
           ticks: {
             callback: function (value) {
               if (!(value % 10)) {
-                return "$" + value + "k";
+                return "KSh" + value + "k";
               }
             },
           },
@@ -303,15 +303,15 @@ let chartExample1 = {
     tooltips: {
       callbacks: {
         label: function (item, data) {
-          var label = data.datasets[item.datasetIndex].label || "";
-          var yLabel = item.yLabel;
-          var content = "";
+          const label = data.datasets[item.datasetIndex].label || "";
+          const yLabel = item.yLabel;
+          let content = "";
 
           if (data.datasets.length > 1) {
             content += label;
           }
 
-          content += "$" + yLabel + "k";
+          content += "KSh" + yLabel + "k";
           return content;
         },
       },
@@ -361,9 +361,9 @@ let chartExample2 = {
     tooltips: {
       callbacks: {
         label: function (item, data) {
-          var label = data.datasets[item.datasetIndex].label || "";
-          var yLabel = item.yLabel;
-          var content = "";
+          const label = data.datasets[item.datasetIndex].label || "";
+          const yLabel = item.yLabel;
+          let content = "";
           if (data.datasets.length > 1) {
             content += label;
           }
@@ -378,7 +378,7 @@ let chartExample2 = {
     datasets: [
       {
         label: "Sales",
-        data: [25, 20, 30, 22, 17, 29],
+        data: [50, 73, 40, 55, 47, 60],
         maxBarThickness: 10,
       },
     ],

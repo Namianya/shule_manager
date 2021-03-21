@@ -148,7 +148,7 @@ export default function NavbarDropdown() {
                         root: classes.avatarRoot,
                     }}
                 />
-                <Hidden smDown>Paul Wekesa</Hidden>
+                <Hidden smDown>User Name</Hidden>
             </Button>
             {renderMenu}
         </>

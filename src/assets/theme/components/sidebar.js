@@ -12,18 +12,7 @@ const componentStyles = (theme) => ({
       color: theme.palette.sidebarLinks.dark,
     },
   },
-  listItemRootUpgradeToPro: {
-    [theme.breakpoints.up("md")]: {
-      position: "absolute",
-      bottom: "10px",
-    },
-    "&,&:hover": {
-      background: theme.palette.gray[100] + "!important",
-    },
-    "&:before": {
-      display: "none",
-    },
-  },
+
   listItemSelected: {
     color: theme.palette.sidebarLinks.dark,
     "&$listItemRoot,&$listItemRoot:hover": {
