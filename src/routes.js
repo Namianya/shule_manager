@@ -1,20 +1,20 @@
-// core components
 import Dashboard from "views/admin/Dashboard.js";
-// import Icons from "views/admin/Icons.js";
 import Login from "views/auth/Login.js";
-// import Maps from "views/admin/Maps.js";
 import Profile from "views/admin/Profile.js";
 import Register from "views/auth/Register.js";
 import Tables from "views/admin/Tables.js";
-// @material-ui/icons components
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import FlashOn from "@material-ui/icons/FlashOn";
 import FormatListBulleted from "@material-ui/icons/FormatListBulleted";
-// import Grain from "@material-ui/icons/Grain";
-// import LocationOn from "@material-ui/icons/LocationOn";
 import Person from "@material-ui/icons/Person";
 import Tv from "@material-ui/icons/Tv";
 import VpnKey from "@material-ui/icons/VpnKey";
+import AdminDashboard from "./views/admin/SchoolDashboard/AdminDashboard";
+import {Grain, GroupAddTwoTone, LocalLibraryTwoTone, SchoolTwoTone, TvTwoTone} from "@material-ui/icons";
+import Icons from "./views/admin/Icons";
+import StudentTables from "./views/admin/SchoolDashboard/StudentTables";
+import Library from "./views/admin/SchoolDashboard/Library";
+import Admission from "./views/admin/SchoolDashboard/Admission";
 
 const routes = [
     {
@@ -25,36 +25,44 @@ const routes = [
         component: Dashboard,
         layout: "/admin",
     },
-    // {
-    //     path: "/icons",
-    //     name: "Icons",
-    //     icon: Grain,
-    //     iconColor: "Primary",
-    //     component: Icons,
-    //     layout: "/admin",
-    // },
-    // {
-    //     path: "/maps",
-    //     name: "Maps",
-    //     icon: LocationOn,
-    //     iconColor: "Warning",
-    //     component: Maps,
-    //     layout: "/admin",
-    // },
+    {
+        path: "/admin dashboard",
+        name: "School Dashboard",
+        icon: TvTwoTone,
+        iconColor: "Primary",
+        component: AdminDashboard,
+        layout: "/admin",
+    },
+    {
+        path: "/student nominal roll",
+        name: "Students",
+        icon: SchoolTwoTone,
+        iconColor: "Primary",
+        component: StudentTables,
+        layout: "/admin",
+    },
+    {
+        path: "/library",
+        name: "Library",
+        icon: LocalLibraryTwoTone,
+        iconColor: "Error",
+        component: Library,
+        layout: "/admin",
+    },
+    {
+        path: "/admission",
+        name: "Admission",
+        icon: GroupAddTwoTone,
+        iconColor: "Info",
+        component: Admission,
+        layout: "/admin",
+    },
     {
         path: "/user-profile",
         name: "User Profile",
         icon: Person,
         iconColor: "WarningLight",
         component: Profile,
-        layout: "/admin",
-    },
-    {
-        path: "/tables",
-        name: "Tables",
-        icon: FormatListBulleted,
-        iconColor: "Error",
-        component: Tables,
         layout: "/admin",
     },
     {
@@ -73,6 +81,10 @@ const routes = [
         component: Register,
         layout: "/auth",
     },
+
+
+
+    //resources
     {
         divider: true,
     },
@@ -84,6 +96,22 @@ const routes = [
             "https://www.google.com/",
         name: "Getting started",
         icon: FlashOn,
+    },
+    {
+        path: "/tables",
+        name: "Tables",
+        icon: FormatListBulleted,
+        iconColor: "Error",
+        component: Tables,
+        layout: "/admin",
+    },
+    {
+        path: "/icons",
+        name: "Icons",
+        icon: Grain,
+        iconColor: "Primary",
+        component: Icons,
+        layout: "/admin",
     },
 
 

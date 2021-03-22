@@ -10,11 +10,10 @@ import Typography from "@material-ui/core/Typography";
 
 // core components
 import componentStyles from "assets/theme/components/card-stats.js";
-import boxShadows from "assets/theme/box-shadow.js";
 
 const useStyles = makeStyles(componentStyles);
 
-function CardStats({subtitle, title, footer, icon, color}) {
+function LinksCard({subtitle, title, footer, icon, color}) {
     const classes = useStyles();
     const theme = useTheme();
     return (
@@ -43,39 +42,12 @@ function CardStats({subtitle, title, footer, icon, color}) {
                                 {title}
                             </Box>
                         </Grid>
-                        <Grid item xs={"auto"}>
-                            <Box
-                                width="3rem"
-                                height="3rem"
-                                padding="12px"
-                                textAlign="center"
-                                display="inline-flex"
-                                alignItems="center"
-                                justifyContent="center"
-                                borderRadius="50%"
-                                boxShadow={boxShadows.boxShadow}
-                                color={theme.palette.white.main}
-                                className={classes[color]}
-                            >
-                                {icon && typeof icon === "object" ? (
-                                    <Box
-                                        component={icon}
-                                        width="1.5rem!important"
-                                        height="1.5rem!important"
-                                    />
-                                ) : null}
-                                {icon && typeof icon === "string" ? (
-                                    <Box component="i" fontSize="1.25rem" className={icon}/>
-                                ) : null}
-                            </Box>
-                        </Grid>
                     </Grid>
                     {footer ? (
                         <Box
-                            component="p"
+                            component="div"
                             fontSize=".875rem"
-                            color={theme.palette.grey[600]}
-                            marginTop="1rem"
+                            marginTop="0"
                             marginBottom="0"
                             display="flex"
                             alignItems="center"
@@ -90,21 +62,14 @@ function CardStats({subtitle, title, footer, icon, color}) {
     );
 }
 
-CardStats.defaultProps = {
+LinksCard.defaultProps = {
     color: "bgPrimaryLight",
 };
 
-CardStats.propTypes = {
-    subtitle: PropTypes.string,
-    title: PropTypes.string,
+LinksCard.propTypes = {
+
     footer: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    icon: PropTypes.oneOfType([
-        // i.e. an icon name from Nucleo Icons - e.g. ni ni-atom
-        // // or an icon name from Font Awesome - e.g. fa fa-heart
-        PropTypes.string,
-        // i.e. a component from @material-ui/icons
-        PropTypes.object,
-    ]),
+
     color: PropTypes.oneOf([
         "bgPrimary",
         "bgPrimaryLight",
@@ -117,4 +82,4 @@ CardStats.propTypes = {
     ]),
 };
 
-export default CardStats;
+export default LinksCard;

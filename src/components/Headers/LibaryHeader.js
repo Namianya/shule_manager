@@ -1,26 +1,23 @@
 import React from "react";
 // @material-ui/core components
-import {makeStyles} from "@material-ui/core/styles";
-import {useTheme} from "@material-ui/core/styles";
+import {makeStyles, useTheme} from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 // @material-ui/icons components
 import ArrowDownward from "@material-ui/icons/ArrowDownward";
 import ArrowUpward from "@material-ui/icons/ArrowUpward";
-import EmojiEvents from "@material-ui/icons/EmojiEvents";
-import GroupAdd from "@material-ui/icons/GroupAdd";
 import InsertChartOutlined from "@material-ui/icons/InsertChartOutlined";
-import PieChart from "@material-ui/icons/PieChart";
 
 // core components
 import CardStats from "components/Cards/CardStats.js";
 
 import componentStyles from "assets/theme/components/header.js";
+import {BookmarkBorderTwoTone, WarningTwoTone} from "@material-ui/icons";
 
 const useStyles = makeStyles(componentStyles);
 
-const Header = () => {
+const LibaryHeader = () => {
     const classes = useStyles();
     const theme = useTheme();
     return (
@@ -35,8 +32,8 @@ const Header = () => {
                         <Grid container>
                             <Grid item xl={3} lg={6} xs={12}>
                                 <CardStats
-                                    subtitle="Traffic"
-                                    title="350,897"
+                                    subtitle="All Records"
+                                    title="2,560"
                                     icon={InsertChartOutlined}
                                     color="bgError"
                                     footer={
@@ -54,7 +51,7 @@ const Header = () => {
                                                     width="1.5rem!important"
                                                     height="1.5rem!important"
                                                 />{" "}
-                                                3.48%
+                                                0.01%
                                             </Box>
                                             <Box component="span" whiteSpace="nowrap">
                                                 Since last month
@@ -65,9 +62,9 @@ const Header = () => {
                             </Grid>
                             <Grid item xl={3} lg={6} xs={12}>
                                 <CardStats
-                                    subtitle="New users"
-                                    title="2,356"
-                                    icon={PieChart}
+                                    subtitle="Borrowed material"
+                                    title="233"
+                                    icon={BookmarkBorderTwoTone}
                                     color="bgWarning"
                                     footer={
                                         <>
@@ -84,7 +81,7 @@ const Header = () => {
                                                     width="1.5rem!important"
                                                     height="1.5rem!important"
                                                 />{" "}
-                                                3.48%
+                                                2.1%
                                             </Box>
                                             <Box component="span" whiteSpace="nowrap">
                                                 Since last week
@@ -95,9 +92,9 @@ const Header = () => {
                             </Grid>
                             <Grid item xl={3} lg={6} xs={12}>
                                 <CardStats
-                                    subtitle="Users"
-                                    title="924"
-                                    icon={GroupAdd}
+                                    subtitle="defaulters"
+                                    title="24"
+                                    icon={WarningTwoTone}
                                     color="bgWarningLight"
                                     footer={
                                         <>
@@ -117,41 +114,14 @@ const Header = () => {
                                                 1.10%
                                             </Box>
                                             <Box component="span" whiteSpace="nowrap">
-                                                Since yesterday
+                                                Since last month
                                             </Box>
                                         </>
                                     }
                                 />
                             </Grid>
                             <Grid item xl={3} lg={6} xs={12}>
-                                <CardStats
-                                    subtitle="Performance"
-                                    title="49,65%"
-                                    icon={EmojiEvents}
-                                    color="bgInfo"
-                                    footer={
-                                        <>
-                                            <Box
-                                                component="span"
-                                                fontSize=".875rem"
-                                                color={theme.palette.success.main}
-                                                marginRight=".5rem"
-                                                display="flex"
-                                                alignItems="center"
-                                            >
-                                                <Box
-                                                    component={ArrowUpward}
-                                                    width="1.5rem!important"
-                                                    height="1.5rem!important"
-                                                />{" "}
-                                                10%
-                                            </Box>
-                                            <Box component="span" whiteSpace="nowrap">
-                                                Since last month
-                                            </Box>
-                                        </>
-                                    }
-                                />
+                                
                             </Grid>
                         </Grid>
                     </div>
@@ -161,4 +131,4 @@ const Header = () => {
     );
 };
 
-export default Header;
+export default LibaryHeader;

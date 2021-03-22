@@ -1,8 +1,5 @@
 import React from "react";
-
-// @material-ui/core components
-import {makeStyles} from "@material-ui/core/styles";
-import {useTheme} from "@material-ui/core/styles";
+import {makeStyles, useTheme} from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
@@ -20,13 +17,9 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Tooltip from "@material-ui/core/Tooltip";
-// @material-ui/lab components
 import AvatarGroup from "@material-ui/lab/AvatarGroup";
 import Pagination from "@material-ui/lab/Pagination";
-// @material-ui/icons components
 import MoreVert from "@material-ui/icons/MoreVert";
-
-// core components
 import Header from "components/Headers/Header.js";
 
 import componentStyles from "assets/theme/views/admin/tables.js";
