@@ -1,6 +1,6 @@
 import React from "react";
 import Chart from "chart.js";
-import {Bar, Line} from "react-chartjs-2";
+import {Line} from "react-chartjs-2";
 import {makeStyles, useTheme} from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
@@ -14,7 +14,7 @@ import Typography from "@material-ui/core/Typography";
 
 import Header from "components/Headers/Header.js";
 
-import {chartExample1, chartExample2, chartOptions, parseOptions,} from "variables/charts.js";
+import {chartExample1, chartOptions, parseOptions,} from "variables/charts.js";
 
 import componentStyles from "assets/theme/views/admin/dashboard.js";
 
@@ -142,12 +142,7 @@ function FinanceDashboard() {
                     <Grid item xs={12} xl={4}>
                         <Card classes={{root: classes.cardRoot}}>
                             <CardHeader
-                                title={
-                                    <Box component="span" color={theme.palette.grey[600]}>
-                                        Performance
-                                    </Box>
-                                }
-                                subheader="Average Student performance"
+                                subheader="Required Links"
                                 classes={{root: classes.cardHeaderRoot}}
                                 titleTypographyProps={{
                                     component: Box,
@@ -167,10 +162,7 @@ function FinanceDashboard() {
                             />
                             <CardContent>
                                 <Box position="relative" height="350px">
-                                    <Bar
-                                        data={chartExample2.data}
-                                        options={chartExample2.options}
-                                    />
+
                                 </Box>
                             </CardContent>
                         </Card>
