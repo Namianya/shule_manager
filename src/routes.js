@@ -10,11 +10,19 @@ import Person from "@material-ui/icons/Person";
 import Tv from "@material-ui/icons/Tv";
 import VpnKey from "@material-ui/icons/VpnKey";
 import AdminDashboard from "./views/admin/SchoolDashboard/AdminDashboard";
-import {Grain, GroupAddTwoTone, LocalLibraryTwoTone, SchoolTwoTone, TvTwoTone} from "@material-ui/icons";
+import {
+    Grain,
+    GroupAddTwoTone,
+    LocalAtmTwoTone,
+    LocalLibraryTwoTone,
+    SchoolTwoTone,
+    TvTwoTone
+} from "@material-ui/icons";
 import Icons from "./views/admin/Icons";
 import StudentTables from "./views/admin/SchoolDashboard/StudentTables";
 import Library from "./views/admin/SchoolDashboard/Library";
 import Admission from "./views/admin/SchoolDashboard/Admission";
+import FinanceDashboard from "./views/admin/SchoolDashboard/Finance";
 
 const routes = [
     {
@@ -31,6 +39,14 @@ const routes = [
         icon: TvTwoTone,
         iconColor: "Primary",
         component: AdminDashboard,
+        layout: "/admin",
+    },
+    {
+        path: "/finance dashboard",
+        name: "Finance Dashboard",
+        icon: LocalAtmTwoTone,
+        iconColor: "WarningLight",
+        component: FinanceDashboard,
         layout: "/admin",
     },
     {

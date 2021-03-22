@@ -29,9 +29,7 @@ const themeColors = {
     badge: "#2643e9",
   },
   secondary: {
-    main: "#ff1744",
-    light: "#ff616f",
-    dark: "#c4001d",
+    main: "#f7fafc",
     snackbar: "#f8fbfc",
     badgeBgHover: "#cadeeb",
     btnOutline: "#4385b1",
@@ -66,6 +64,7 @@ const themeColors = {
   },
   text: {
     primary: "#525f7f",
+    success: "#2dce89",
   },
   dark: {
     tableBorder: "#1f3a68",
