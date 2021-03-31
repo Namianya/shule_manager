@@ -144,7 +144,7 @@ const AllSchools = (props) => {
                                                     />
                                                     <Box display="flex" alignItems="flex-start">
                                                         <Box fontSize=".875rem" component="span">
-                                                            {school.name}
+                                                            {school.schoolName}
                                                         </Box>
                                                     </Box>
                                                 </Box>
@@ -249,7 +249,8 @@ const AllSchools = (props) => {
 const mapStateToProps = (state) => {
     console.log(state);
     return {
-        schools: state.school.schools
+        // schools: state.school.schools
+        schools: state.firestore.ordered.schools
     }
 }
 
