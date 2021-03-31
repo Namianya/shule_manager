@@ -27,6 +27,7 @@
     "@material-ui/icons": "4.11.2",
     "@material-ui/lab": "4.0.0-alpha.57",
     "chart.js": "2.9.4",
+    "firebase": "^8.3.1",
     "node-sass": "5.0.0",
     "nouislider": "14.6.3",
     "prop-types": "15.7.2",
@@ -36,8 +37,13 @@
     "react-datetime": "3.0.4",
     "react-dom": "17.0.1",
     "react-phone-number-input": "^3.1.17",
+    "react-redux": "^7.2.3",
+    "react-redux-firebase": "^3.10.0",
     "react-router-dom": "5.2.0",
-    "react-scripts": "4.0.2"
+    "react-scripts": "4.0.2",
+    "redux": "^4.0.5",
+    "redux-firestore": "^0.5.7",
+    "redux-thunk": "^2.3.0"
   },
   "eslintConfig": {
     "extends": [

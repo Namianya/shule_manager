@@ -11,6 +11,7 @@ import Tv from "@material-ui/icons/Tv";
 import VpnKey from "@material-ui/icons/VpnKey";
 import AdminDashboard from "./views/admin/SchoolDashboard/AdminDashboard";
 import {
+    AddTwoTone,
     Grain,
     GroupAddTwoTone,
     LocalAtmTwoTone,
@@ -23,6 +24,8 @@ import StudentTables from "./views/admin/SchoolDashboard/StudentTables";
 import Library from "./views/admin/SchoolDashboard/Library";
 import Admission from "./views/admin/SchoolDashboard/Admission";
 import FinanceDashboard from "./views/admin/SchoolDashboard/Finance";
+import AllSchools from "./views/admin/SchoolDashboard/AllSchools";
+import AddNewSchool from "./views/admin/SchoolDashboard/AddNewSchool";
 
 const routes = [
     {
@@ -39,6 +42,22 @@ const routes = [
         icon: TvTwoTone,
         iconColor: "Primary",
         component: AdminDashboard,
+        layout: "/admin",
+    },
+    {
+        path: "/new school",
+        name: "New School",
+        icon: AddTwoTone,
+        iconColor: "Error",
+        component: AddNewSchool,
+        layout: "/admin",
+    },
+    {
+        path: "/all schools",
+        name: "All Schools",
+        icon: TvTwoTone,
+        iconColor: "Primary",
+        component: AllSchools,
         layout: "/admin",
     },
     {

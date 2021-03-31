@@ -22,12 +22,14 @@ import Header from "components/Headers/Header.js";
 
 import componentStyles from "assets/theme/views/admin/tables.js";
 import {connect} from "react-redux";
+import {compose} from "redux";
+import {firestoreConnect} from "react-redux-firebase";
 
 const useStyles = makeStyles(componentStyles);
 
-const StudentTables = (props) => {
-    const {students} = props
-    console.log(students);
+const AllSchools = (props) => {
+    const {schools} = props
+
     const classes = useStyles();
     const theme = useTheme();
     const [anchorEl1, setAnchorEl1] = React.useState(null);
@@ -41,7 +43,6 @@ const StudentTables = (props) => {
     };
     const handleClose = () => {
         setAnchorEl1(null);
-
     };
     return (
         <>
@@ -56,7 +57,7 @@ const StudentTables = (props) => {
                 <Card classes={{root: classes.cardRoot}}>
                     <CardHeader
                         className={classes.cardHeader}
-                        title="Student Tables"
+                        title="Card Tables"
                         titleTypographyProps={{
                             component: Box,
                             marginBottom: "0!important",
@@ -77,7 +78,7 @@ const StudentTables = (props) => {
                                                 classes.tableCellRoot + " " + classes.tableCellRootHead,
                                         }}
                                     >
-                                        Name
+                                        School Name
                                     </TableCell>
                                     <TableCell
                                         classes={{
@@ -85,7 +86,7 @@ const StudentTables = (props) => {
                                                 classes.tableCellRoot + " " + classes.tableCellRootHead,
                                         }}
                                     >
-                                        Admission No.
+                                        Reg No.
                                     </TableCell>
                                     <TableCell
                                         classes={{
@@ -101,7 +102,7 @@ const StudentTables = (props) => {
                                                 classes.tableCellRoot + " " + classes.tableCellRootHead,
                                         }}
                                     >
-                                        Age
+                                        population
                                     </TableCell>
                                     <TableCell
                                         classes={{
@@ -109,7 +110,7 @@ const StudentTables = (props) => {
                                                 classes.tableCellRoot + " " + classes.tableCellRootHead,
                                         }}
                                     >
-                                        Completion
+                                        Payment Completion
                                     </TableCell>
                                     <TableCell
                                         classes={{
@@ -120,7 +121,7 @@ const StudentTables = (props) => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {students && students.map(student => {
+                                {schools && schools.map(school => {
                                     return (
                                         <TableRow>
                                             <TableCell
@@ -143,13 +144,13 @@ const StudentTables = (props) => {
                                                     />
                                                     <Box display="flex" alignItems="flex-start">
                                                         <Box fontSize=".875rem" component="span">
-                                                            {student.name}
+                                                            {school.name}
                                                         </Box>
                                                     </Box>
                                                 </Box>
                                             </TableCell>
                                             <TableCell classes={{root: classes.tableCellRoot}}>
-                                                {student.id}
+                                                {school.id}
                                             </TableCell>
                                             <TableCell classes={{root: classes.tableCellRoot}}>
                                                 <Box paddingTop=".35rem" paddingBottom=".35rem">
@@ -161,27 +162,27 @@ const StudentTables = (props) => {
                                                         borderRadius="50%"
                                                         display="inline-block"
                                                         className={
-                                                            classes.verticalAlignMiddle + " " + classes.bgWarning
+                                                             (school.payments!==100) ? classes.verticalAlignMiddle + " " + classes.bgWarning : classes.verticalAlignMiddle + " " + classes.bgSuccess
                                                         }
                                                     />
-                                                    {(student.completion!==100) ? 'pending' : 'completed'}
+                                                    {(school.payments!==100) ? 'pending' : 'completed'}
                                                 </Box>
                                             </TableCell>
                                             <TableCell classes={{root: classes.tableCellRoot}}>
-                                                {student.age}
+                                                {school.population}
                                             </TableCell>
                                             <TableCell classes={{root: classes.tableCellRoot}}>
                                                 <Box display="flex" alignItems="center">
                                                     <Box component="span" marginRight=".5rem">
-                                                        {student.completion}%
+                                                        {school.payments}%
                                                     </Box>
                                                     <Box width="100%">
                                                         <LinearProgress
                                                             variant="determinate"
-                                                            value={student.completion}
+                                                            value={school.payments}
                                                             classes={{
                                                                 root: classes.linearProgressRoot,
-                                                                bar: (student.completion!==100) ? classes.bgWarning : classes.bgSuccess,
+                                                                bar: (school.payments!==100) ? classes.bgWarning : classes.bgSuccess,
                                                             }}
                                                         />
                                                     </Box>
@@ -225,7 +226,8 @@ const StudentTables = (props) => {
                                                     </MenuItem>
                                                 </Menu>
                                             </TableCell>
-                                        </TableRow>)
+                                        </TableRow>
+                                    )
                                 })}
                             </TableBody>
                         </Box>
@@ -243,10 +245,17 @@ const StudentTables = (props) => {
         </>
     );
 };
+
 const mapStateToProps = (state) => {
+    console.log(state);
     return {
-        students: state.student.students
+        schools: state.school.schools
     }
 }
 
-export default connect(mapStateToProps)(StudentTables);
+export default compose(
+    connect(mapStateToProps),
+    firestoreConnect([
+        {collection: 'schools'}
+    ])
+)(AllSchools);
